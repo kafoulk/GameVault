@@ -1,12 +1,9 @@
-# GameVault E-Commerce Site: Card and Gaming Shop
+# GameVault: E-Commerce Site | Card and Gaming Shop
 
 INFO-I210
 4/04/25
 Proposal
 Team Members: Emily Duran, Kiersten Foulk, Jalen Ray
-
- # Potential Names:
-GameVault?
 
 # Objectives:
 The primary objective of this project is to design and develop a functional and visually appealing e-commerce website that caters to enthusiasts of board games, card games, and collectibles.
