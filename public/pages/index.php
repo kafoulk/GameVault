@@ -1,5 +1,12 @@
 <?php
-// Load board game data from local API
+// Load board game data from API
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://boardgamegeek.com/wiki/page/BGG_XML_API2');
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+$response = curl_exec($ch);
+curl_close($ch);
+
+echo $response;
 ?>
 
 <!DOCTYPE html>
@@ -13,11 +20,11 @@
 
     </head>
     <body>
-    <?php include 'includes/header.php'; ?>
+    <?php include '../../includes/header.php'; ?>
         <main>
 
         </main>
-    <?php include 'includes/footer.php'; ?>
+    <?php include "../../includes/footer.php"; ?>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 
