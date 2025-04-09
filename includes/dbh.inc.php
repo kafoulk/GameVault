@@ -1,6 +1,6 @@
 <?php
 
-$host = "localhost"; // Or your server's IP address
+$host = "localhost";
 $port = 3306; // Default MySQL port
 $user = "root";
 $password = "";
