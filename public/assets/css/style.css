@@ -1,0 +1,24 @@
+/* Basic CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/* Header styles */
+
+/* Content styles */
+main {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+/* Footer styles */

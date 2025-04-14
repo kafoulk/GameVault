@@ -1,9 +1,5 @@
-<?php
-// Dynamically load header
-include "../../includes/header.php";
-?>
-        <main>
+<?php include '../../includes/header.php'; ?>
+    <main>
 
-        </main>
-
+    </main>
 <?php include "../../includes/footer.php"; ?>

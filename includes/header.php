@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVault</title>
+    <link rel="icon" type="image/png" href="../public/assets/images/favicon.png?v=2">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -64,7 +65,7 @@
                                         <a class="nav-link" href="#">Products</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Contact</a>
+                                        <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="btn btn-primary ms-3" href="../../public/pages/shopping_cart.php"><i class="bi bi-cart3 fs-4"></i></a>
