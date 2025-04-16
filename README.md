@@ -19,12 +19,12 @@ HTML, CSS, JavaScript (for front-end development)
 PHP and SQL (for back-end functionality and database management)
 
 ## Content Layout: 
--Home Page: Introduction to the site, featured products, and promotional offers.  
--Products Page: A catalog of available items with categories, filters, and search functionalities.  
--Product Details Page: Detailed descriptions, images, pricing, and purchase options for each product.  
--About Us Page: Information about our team and the purpose of the site.  
--Contact Us Page: A form for customer inquiries and feedback.  
--Shopping Cart/Checkout Page: Secure and streamlined purchasing process.
+-**Home Page**: Introduction to the site, featured products, and promotional offers.  
+-**Products Page**: A catalog of available items with categories, filters, and search functionalities.  
+-**Product Details Page**: Detailed descriptions, images, pricing, and purchase options for each product.  
+-**About Us Page**: Information about our team and the purpose of the site.  
+-**Contact Us Page**: A form for customer inquiries and feedback.  
+-**Shopping Cart/Checkout Page**: Secure and streamlined purchasing process.
 
 ##  Instructions for local use
 1. **Install npm**: command installs all the dependencies listed in the `package.json` file.
