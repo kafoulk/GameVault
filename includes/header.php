@@ -1,4 +1,16 @@
 <?php
+$page = isset($_GET['page']) ? $_GET['page'] : 'index';
+
+// List of valid pages
+$valid_pages = ['index', 'about', 'products', 'contact'];
+
+// If the page is not valid, direct to 404 page
+if (!in_array($page, $valid_pages)) {
+    http_response_code(404);
+    include "../public/pages/404.php";
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +33,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-12">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="../../public/pages/index.php">
                             <img src="../../public/assets/images/gv_logo_long.png" alt="gamevault logo" style="height:50px">
                         </a>
                     </div>
@@ -62,13 +74,13 @@
                                         <a class="nav-link" href="../../public/pages/index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Products</a>
+                                        <a class="nav-link" href="../../public/pages/products.php">Products</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="btn btn-primary ms-3" href="../../public/pages/shopping_cart.php"><i class="bi bi-cart3 fs-4"></i></a>
+                                        <a class="btn btn-primary ms-3" href="../../public/pages/shoppingCart.php"><i class="bi bi-cart3 fs-4"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -78,7 +90,7 @@
             </div>
         </div>
 
-    </header><!-- #header -->
+    </header>
 
     <body>
 
