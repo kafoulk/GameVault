@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 // Initialize the cart if it doesn't exist
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -13,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST[
     $quantity = (int)$_POST['quantity'];
 
     // Fetch product details from the database
-    // Assuming you have a function getProductById($id) that returns product details
     $product = getProductById($product_id);
 
     if ($product) {
@@ -50,7 +46,7 @@ function getProductById($id)
 {
     // Replace with your actual database connection and query
     // Example using PDO:
-    $pdo = new PDO('mysql:host=localhost;dbname=your_database', 'username', 'password');
+    $pdo = new PDO('mysql:host=localhost;dbname=gamevault', 'root', '');
     $stmt = $pdo->prepare('SELECT id, name, price FROM products WHERE id = ?');
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
