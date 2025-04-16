@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-12">
-                        <a class="navbar-brand" href="#">
+                        <a class="navbar-brand" href="../../public/pages/index.php">
                             <img src="../../public/assets/images/gv_logo_long.png" alt="gamevault logo" style="height:50px">
                         </a>
                     </div>
@@ -78,7 +78,7 @@
             </div>
         </div>
 
-    </header><!-- #header -->
+    </header>
 
     <body>
 
