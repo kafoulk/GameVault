@@ -74,6 +74,9 @@ if (!in_array($page, $valid_pages)) {
                                         <a class="nav-link" href="../../public/pages/index.php">Home</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="nav-link" href="../../public/pages/about.php">About</a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link" href="../../public/pages/products.php">Products</a>
                                     </li>
                                     <li class="nav-item">
