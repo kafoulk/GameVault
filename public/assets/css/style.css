@@ -41,7 +41,7 @@ body {
    Layout Styles
 ====================================== */
 main {
-    padding-top: 50px;
+    /*padding-top: 20px;*/
     padding-bottom: 50px;
 }
 
@@ -68,6 +68,8 @@ main {
 
 
 
+
+
 /* ======================================
    Carousel styles
 ====================================== */
@@ -75,13 +77,17 @@ main {
     overflow: hidden;
     width: 100%;
     padding: 1rem 0;
+    /*background-color: black;*/
+    margin: 0 20px;
+    border-radius:20px;
+    mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 .carousel {
     display: flex;
     gap: 2rem;
     animation: scroll 30s linear infinite;
-    padding: 1rem 0;
+    padding: 1rem 2rem;
     align-items: center;
 }
 
@@ -123,4 +129,25 @@ main {
     0%   { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
+
+/* ======================================
+   Contact Page styles
+====================================== */
+.contact_row {
+}
+
+.map {
+    background-color: black;
+    padding: 20px;
+    width: 500px;
+}
+
+
+.form {
+    background-color: black;
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+}
+
 

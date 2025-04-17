@@ -55,11 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php endif; ?>
 
         <!-- Contact Row -->
-        <div class="row">
+        <div class="row contact_row">
             <!-- Google Map -->
             <div class="col-lg-6 mb-4 mb-lg-0">
                 <div class="h-100 w-100" style="min-height: 100%; border-radius: 10px; overflow: hidden;">
-                    <iframe
+                    <iframe class="map"
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d24530.66632023649!2d-86.1765632!3d39.7770752!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1744858512968!5m2!1sen!2sus"
                             width="100%"
                             height="100%"
@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </div>
 
             <!-- Contact Form -->
-            <div class="col-lg-6">
+            <div class="col-lg-6 form">
                 <form id="contactForm" action="" method="POST" class="row g-3 needs-validation" novalidate>
                     <div class="col-md-6">
                         <label for="name" class="form-label">Full Name</label>
