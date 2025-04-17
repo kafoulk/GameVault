@@ -1,24 +1,126 @@
-/* Basic CSS Reset */
+/* ======================================
+   Basic CSS Reset
+====================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     font-family: sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-/* Header styles */
 
-/* Content styles */
+/* ======================================
+   Theme Variables
+====================================== */
+:root {
+    --bs-primary: #58e63e;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary) !important;
+    border-color: var(--bs-primary) !important;
+    color: #000 !important;
+    box-shadow: 0, 0 0 3 px var(--bs-primary), 0 0 3 px var(--bs-primary) !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #52d63a !important;
+    box-shadow: 0 0 3px #15bd08, 0 0 3px #15bd08 !important;
+    color: #000 !important;
+}
+
+/* ======================================
+   Layout Styles
+====================================== */
 main {
     padding-top: 50px;
     padding-bottom: 50px;
 }
 
+/* ======================================
+   Header styles
+====================================== */
+.nav-item {
+    font-weight: 600;
+}
 
-/* Footer styles */
+.nav-link {
+    font-weight: 600;
+    transition: color 0.3s ease-in-out;
+}
+
+.nav-link:hover {
+    color: #f0f4ee;
+}
+
+
+/* ======================================
+   Footer styles
+====================================== */
+
+
+
+/* ======================================
+   Carousel styles
+====================================== */
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    padding: 1rem 0;
+}
+
+.carousel {
+    display: flex;
+    gap: 2rem;
+    animation: scroll 30s linear infinite;
+    padding: 1rem 0;
+    align-items: center;
+}
+
+.products {
+    flex: 0 0 auto;
+    width: 220px;
+    height: 300px;
+    background-color: #424242;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.products:hover {
+    transform: scale(1.03);
+}
+
+.products img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.products p {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ede9e9;
+}
+
+@keyframes scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
