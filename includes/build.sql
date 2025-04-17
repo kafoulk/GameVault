@@ -1,6 +1,6 @@
 -- Create the gamevault database if it doesn't exist
-CREATE DATABASE IF NOT EXISTS gamevault;
-USE gamevault;
+CREATE DATABASE IF NOT EXISTS GameVault;
+USE GameVault;
 
 -- Create users table for secure user information
 CREATE TABLE users (
@@ -82,18 +82,18 @@ INSERT INTO categories (category_name, description) VALUES
 ('Party Games', 'Fun games for parties and large groups'),
 ('Strategy Games', 'Complex strategy-based games');
 
--- Insert sample data into products
+-- Insert sample data into products with corrected image paths
 INSERT INTO products (category_id, product_name, description, price, stock_quantity, image_url) VALUES
-(1, 'Catan', 'A classic strategy board game where players collect resources and build settlements', 49.99, 25, 'images/products/catan.jpg'),
-(1, 'Ticket to Ride', 'Cross-country train adventure board game', 44.99, 18, 'images/products/ticket_to_ride.jpg'),
-(2, 'Magic: The Gathering Starter Kit', 'Trading card game starter kit with two ready-to-play decks', 14.99, 30, 'images/products/mtg_starter.jpg'),
-(2, 'Pokémon Trading Card Game Elite Trainer Box', 'Contains booster packs and accessories', 39.99, 15, 'images/products/pokemon_elite.jpg'),
-(3, 'Monopoly', 'Classic property trading board game for the whole family', 29.99, 22, 'images/products/monopoly.jpg'),
-(3, 'Scrabble', 'Classic word-building game', 19.99, 20, 'images/products/scrabble.jpg'),
-(4, 'Exploding Kittens', 'Highly-strategic, kitty-powered card game', 19.99, 28, 'images/products/exploding_kittens.jpg'),
-(4, 'Cards Against Humanity', 'Fill-in-the-blank party game for adults', 29.99, 12, 'images/products/cards_against_humanity.jpg'),
-(5, 'Twilight Imperium', 'Epic space opera strategy game', 149.99, 8, 'images/products/twilight_imperium.jpg'),
-(5, 'Terraforming Mars', 'Strategic game about making Mars habitable', 69.99, 10, 'images/products/terraforming_mars.jpg');
+(1, 'Catan', 'A classic strategy board game where players collect resources and build settlements', 49.99, 25, '../../public/assets/images/catan_logo.png'),
+(1, 'Ticket to Ride', 'Cross-country train adventure board game', 44.99, 18, '../../public/assets/images/ticket_to_ride_logo.png'),
+(2, 'Magic: The Gathering Starter Kit', 'Trading card game starter kit with two ready-to-play decks', 14.99, 30, '../../public/assets/images/magic_the_gathering_starter_kit_logo.png'),
+(2, 'Pokémon Trading Card Game Elite Trainer Box', 'Contains booster packs and accessories', 39.99, 15, '../../public/assets/images/pokemon_trading_card_game_logo.jpg'),
+(3, 'Monopoly', 'Classic property trading board game for the whole family', 29.99, 22, '../../public/assets/images/monopoly_game.jpg'),
+(3, 'Scrabble', 'Classic word-building game', 19.99, 20, '../../public/assets/images/scrabble_logo.png'),
+(4, 'Exploding Kittens', 'Highly-strategic, kitty-powered card game', 19.99, 28, '../../public/assets/images/exploding_kittens_logo.png'),
+(4, 'Cards Against Humanity', 'Fill-in-the-blank party game for adults', 29.99, 12, '../../public/assets/images/cards_against_humanity.png'),
+(5, 'Twilight Imperium', 'Epic space opera strategy game', 149.99, 8, '../../public/assets/images/twilight_imperium_logo.jpg'),
+(5, 'Terraforming Mars', 'Strategic game about making Mars habitable', 69.99, 10, '../../public/assets/images/terraforming_mars_logo.jpg');
 
 -- Insert sample user data with hashed passwords (in a real application, you would hash passwords properly)
 INSERT INTO users (username, email, password_hash, first_name, last_name) VALUES
