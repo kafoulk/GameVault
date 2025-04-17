@@ -1,0 +1,23 @@
+{
+  "name": "gamevault",
+  "version": "1.0.0",
+  "description": "INFO-I210\r 4/04/25\r Proposal\r Team Members: Emily Duran, Kiersten Foulk, Jalen Ray",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kafoulk/GameVault.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kafoulk/GameVault/issues"
+  },
+  "homepage": "https://github.com/kafoulk/GameVault#readme",
+  "dependencies": {
+    "bootstrap": "^5.3.5"
+  }
+}
