@@ -49,6 +49,7 @@ $total = calculate_cart_total();
             </div>
         <?php else: ?>
             <p>Your cart is empty. <a href="products.php">Browse products</a>.</p>
+            <?php include '../src/php/carousel.php'; ?>
         <?php endif; ?>
     </div>
 </main>

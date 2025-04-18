@@ -14,7 +14,7 @@ if (!in_array($page, $valid_pages)) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,16 +29,16 @@ if (!in_array($page, $valid_pages)) {
     <header id="header" class="site-header" role="banner">
 
         <!-- Header Top -->
-        <div class="header-top py-2 bg-light">
+        <div class="header-top py-2 bg-light-subtle">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-12">
                         <a class="navbar-brand" href="../../public/pages/index.php">
-                            <img src="../../public/assets/images/gv_logo_long.png" alt="gamevault logo" style="height:50px">
+                            <img src="../../public/assets/images/gamevault_long.svg" alt="gamevault logo" style="height:50px">
                         </a>
                     </div>
                     <div class="col-lg-9 col-md-8 col-12 text-end">
-                        <p class="mb-0">
+                        <p class="mb-0" style="font-size:12px">
                             Unbox Adventure — One Game Night at a Time!
                         </p>
                         <p class="mb-0">
@@ -72,6 +72,9 @@ if (!in_array($page, $valid_pages)) {
                                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                     <li class="nav-item">
                                         <a class="nav-link" href="../../public/pages/index.php">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="../../public/pages/about.php">About</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="../../public/pages/products.php">Products</a>

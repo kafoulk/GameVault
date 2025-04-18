@@ -8,7 +8,7 @@
                     <small class="text-muted">&copy; <?php echo date('Y'); ?>. All Rights Reserved.</small>
                 </div>
                 <div class="col-md-4">
-                    <a href="../../public/pages/index.php"><img src="../../public/assets/images/favicon.png" alt="logo" style="height: 50px"></a>
+                    <a href="../../public/pages/index.php"><img src="../../public/assets/images/favicon.svg" alt="logo" style="height: 50px"></a>
                 </div>
                 <div class="col-md-4 socialMedia">
                     <i class="bi bi-facebook"></i>
