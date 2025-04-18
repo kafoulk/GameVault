@@ -1,29 +1,15 @@
 <?php
-$db_host = '127.0.0.1';
-$db_user = 'root';
-$db_password = 'Jrock4500';
-$db_db = 'gamevault';
-$db_port = 3306;
 
-$mysqli = new mysqli(
-    $db_host,
-    $db_user,
-    $db_password,
-    $db_db,
-    $db_port
-);
+$host = "localhost";
+$port = 3306;
+$user = "root";
+$password = "root";
+$dbname = "gamevault";
 
-if ($mysqli->connect_error) {
-    echo 'Errno: '.$mysqli->connect_errno;
-    echo '<br>';
-    echo 'Error: '.$mysqli->connect_error;
-    exit();
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
-
-echo 'Success: A proper connection to MySQL was made.';
-echo '<br>';
-echo 'Host information: '.$mysqli->host_info;
-echo '<br>';
-echo 'Protocol version: '.$mysqli->protocol_version;
-
 ?>

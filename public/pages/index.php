@@ -1,6 +1,7 @@
 <?php
 // Include database connection
-require_once '../../includes/dbh.inc.php';
+require_once '../../includes/dbh.inc2.php';
+
 
 // Check if connection is successful
 if (!isset($mysqli) || $mysqli->connect_error) {
@@ -22,7 +23,72 @@ $categories_result = $mysqli->query($categories_query);
 // Include header
 include '../../includes/header.php';
 ?>
+    <style>
+        /* Product grid styling */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
 
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-info h3 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .product-category {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: #e63946;
+            margin: 10px 0;
+        }
+
+        .btn-view {
+            display: inline-block;
+            background-color: #457b9d;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn-view:hover {
+            background-color: #1d3557;
+        }
+    </style>
     <main>
         <!-- Hero Section -->
         <section class="hero">
@@ -37,6 +103,7 @@ include '../../includes/header.php';
         </section>
 
         <!-- Featured Products Section -->
+
         <section class="featured-products">
             <h2>Featured Products</h2>
             <div class="product-grid">
