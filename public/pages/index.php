@@ -3,6 +3,9 @@
 require_once '../../includes/dbh.inc2.php';
 
 
+
+
+
 // Check if connection is successful
 if (!isset($mysqli) || $mysqli->connect_error) {
     die("Connection failed: " . (isset($mysqli) ? $mysqli->connect_error : "Connection variable not set"));
@@ -13,82 +16,15 @@ $featured_query = "SELECT p.*, c.category_name
                   FROM products p
                   JOIN categories c ON p.category_id = c.category_id
                   ORDER BY p.price DESC
-                  LIMIT 5";
+                  LIMIT 3";
 $featured_result = $mysqli->query($featured_query);
 
-// Fetch categories
-$categories_query = "SELECT * FROM categories LIMIT 5";
-$categories_result = $mysqli->query($categories_query);
 
 // Include header
 include '../../includes/header.php';
 ?>
-    <style>
-        /* Product grid styling */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
 
-        .product-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .product-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .product-info {
-            padding: 15px;
-        }
-
-        .product-info h3 {
-            margin-top: 0;
-            font-size: 18px;
-        }
-
-        .product-category {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .product-price {
-            font-weight: bold;
-            color: #e63946;
-            margin: 10px 0;
-        }
-
-        .btn-view {
-            display: inline-block;
-            background-color: #457b9d;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        .btn-view:hover {
-            background-color: #1d3557;
-        }
-    </style>
     <main>
         <!-- Hero Section -->
         <section class="hero">
@@ -116,9 +52,13 @@ include '../../includes/header.php';
                         <div class="product-card">
                             <div class="product-image">
                                 <?php if (!empty($product['image_url'])): ?>
-                                    <img src="<?php echo htmlspecialchars($product['image_url']); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
+                                    <?php
+                                    // Fix for incorrect image paths
+                                    $image_path = str_replace('../public/assets/images/products/', '../assets/images/products/', $product['image_url']);
+                                    ?>
+                                    <img src="<?php echo htmlspecialchars($image_path); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <?php else: ?>
-                                    <img src="../../public/assets/images/GameVault.png" alt="Product image placeholder">
+                                    <img src="../assets/images/products/catan_logo.png" alt="Product image placeholder">
                                 <?php endif; ?>
                             </div>
                             <div class="product-info">
@@ -137,27 +77,7 @@ include '../../includes/header.php';
             </div>
         </section>
 
-        <!-- Categories Showcase -->
-        <section class="categories-showcase">
-            <h2>Explore Categories</h2>
-            <div class="categories-grid">
-                <?php
-                // Check if there are categories
-                if ($categories_result && $categories_result->num_rows > 0) {
-                    while ($category = $categories_result->fetch_assoc()) {
-                        ?>
-                        <a href="products.php?category=<?php echo $category['category_id']; ?>" class="category-card">
-                            <h3><?php echo htmlspecialchars($category['category_name']); ?></h3>
-                            <p><?php echo htmlspecialchars($category['description']); ?></p>
-                        </a>
-                        <?php
-                    }
-                } else {
-                    echo "<p>No categories available at this time.</p>";
-                }
-                ?>
-            </div>
-        </section>
+
 
         <!-- Promotional Banner -->
         <section class="promo-banner">
