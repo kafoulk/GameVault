@@ -7,8 +7,8 @@ require_once '../../includes/dbh.inc.php';
 
 
 // Check if connection is successful
-if (!isset($mysqli) || $mysqli->connect_error) {
-    die("Connection failed: " . (isset($mysqli) ? $mysqli->connect_error : "Connection variable not set"));
+if (!isset($conn) || $conn->connect_error) {
+    die("Connection failed: " . (isset($conn) ? $conn->connect_error : "Connection variable not set"));
 }
 
 // Fetch featured products
@@ -17,7 +17,7 @@ $featured_query = "SELECT p.*, c.category_name
                   JOIN categories c ON p.category_id = c.category_id
                   ORDER BY p.price DESC
                   LIMIT 3";
-$featured_result = $mysqli->query($featured_query);
+$featured_result = $conn->query($featured_query);
 
 
 // Include header
@@ -54,7 +54,7 @@ include '../../includes/header.php';
                                 <?php if (!empty($product['image_url'])): ?>
                                     <?php
                                     // Fix for incorrect image paths
-                                    $image_path = str_replace('../public/assets/images/products/', '../assets/images/products/', $product['image_url']);
+                                    $image_path =
                                     ?>
                                     <img src="<?php echo htmlspecialchars($image_path); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <?php else: ?>
@@ -98,7 +98,7 @@ if (isset($featured_result)) $featured_result->free_result();
 if (isset($categories_result)) $categories_result->free_result();
 
 // Close connection
-if (isset($mysqli)) $mysqli->close();
+if (isset($conn)) $conn->close();
 
 // Include footer
 include "../../includes/footer.php";

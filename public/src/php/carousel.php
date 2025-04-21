@@ -14,8 +14,8 @@ $result = $conn->query($sql);
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="products">
                 <img
-                    src="<?php echo $basePath . htmlspecialchars($row['image_url']); ?>"
-                    alt="<?php echo htmlspecialchars($row['product_name']); ?>"
+                        src="<?php echo $basePath . htmlspecialchars($row['image_url']); ?>"
+                        alt="<?php echo htmlspecialchars($row['product_name']); ?>"
                 />
                 <p><?php echo htmlspecialchars($row['product_name']); ?></p>
             </div>
