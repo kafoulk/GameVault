@@ -54,7 +54,7 @@ include '../../includes/header.php';
                                 <?php if (!empty($product['image_url'])): ?>
                                     <?php
                                     // Fix for incorrect image paths
-                                    $image_path =
+                                    $image_path = str_replace('../public/assets/images/products/', '../assets/images/products/', $product['image_url']);
                                     ?>
                                     <img src="<?php echo htmlspecialchars($image_path); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
                                 <?php else: ?>
