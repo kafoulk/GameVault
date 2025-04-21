@@ -5,7 +5,7 @@ $db_password = 'Jrock4500';
 $db_db = 'gamevault';
 $db_port = 3306;
 
-$mysqli = new mysqli(
+$conn = new mysqli(
     $db_host,
     $db_user,
     $db_password,
@@ -13,13 +13,14 @@ $mysqli = new mysqli(
     $db_port
 );
 
-if ($mysqli->connect_error) {
-    echo 'Errno: '.$mysqli->connect_errno;
+if ($conn->connect_error) {
+    echo 'Errno: '.$conn->connect_errno;
     echo '<br>';
-    echo 'Error: '.$mysqli->connect_error;
+    echo 'Error: '.$conn->connect_error;
     exit();
 }
 
+define('product_img', 'public/assets/images/products')
 
 
 ?>
