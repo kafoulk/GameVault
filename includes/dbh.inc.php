@@ -1,14 +1,15 @@
 <?php
 
 $host = "localhost";
-$port = 3306; // Default MySQL port
+$port = 3306;
 $user = "root";
-$password = "";
+$password = "root";
 $dbname = "gamevault";
 
-try {
-    $pdo = new PDO($host, $port, $user, $password, $dbname);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    echo "Connection Failed" . $e->getMessage();
+$conn = new mysqli($host, $user, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
+?>
