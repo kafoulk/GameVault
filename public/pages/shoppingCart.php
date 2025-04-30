@@ -23,7 +23,7 @@ $total = calculate_cart_total();
                 <tbody>
                 <?php
                 $total_price = 0;
-                foreach ($_SESSION['cart'] as $item):
+                foreach ($_SESSION['cart'] as $product_id => $item):
                     $item_total = $item['price'] * $item['quantity'];
                     $total_price += $item_total;
                     ?>
@@ -32,14 +32,18 @@ $total = calculate_cart_total();
                         <td><?= number_format($item['price'], 2) ?></td>
                         <td>
                             <div class="d-flex align-items-center">
-                                <a href="../src/php/cart.php?action=decrease&id=<?= $item['id'] ?>" class="btn btn-sm btn-outline-secondary me-1">−</a>
+                                <a href="../src/php/cart.php?action=decrease&id=<?= $product_id ?>" class="btn btn-sm btn-outline-secondary me-1">−</a>
                                 <span><?= $item['quantity'] ?></span>
-                                <a href="../src/php/cart.php?action=increase&id=<?= $item['id'] ?>" class="btn btn-sm btn-outline-secondary ms-1">+</a>
+                                <a href="../src/php/cart.php?action=increase&id=<?= $product_id ?>" class="btn btn-sm btn-outline-secondary ms-1">+</a>
                             </div>
                         </td>
                         <td><?= number_format($item_total, 2) ?></td>
                         <td>
-                            <a href="../src/php/cart.php?action=remove&id=<?= $item['id'] ?>" class="btn btn-sm btn-danger">Remove</a>
+                            <form method="post" action="../src/php/cart.php" style="display:inline;">
+                                <input type="hidden" name="action" value="remove">
+                                <input type="hidden" name="product_id" value="<?= $product_id ?>">
+                                <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -60,6 +64,6 @@ $total = calculate_cart_total();
     </div>
 </main>
 <?php include "../../includes/footer.php"; ?>
-<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

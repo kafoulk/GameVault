@@ -94,7 +94,7 @@ INSERT INTO products (category_id, product_name, description, price, stock_quant
 (3, 'Scrabble', 'Classic word-building game', 19.99, 20, '../public/assets/images/products/scrabble_logo.png'),
 (5, 'Terraforming Mars', 'Strategic game about making Mars habitable', 69.99, 10, '../public/assets/images/products/terraforming_mars_logo.jpg'),
 (1, 'Ticket to Ride', 'Cross-country train adventure board game', 44.99, 18, '../public/assets/images/products/ticket_to_ride_logo.png'),
-(5, 'Twilight Imperium', 'Epic space opera strategy game', 149.99, 8, '../public/assets/images/products/twilight_imperium_logo.jpg');
+(5, 'Twilight Imperium', 'Epic space opera strategy game', 149.99, 8, '../public/assets/images/products/twilight_imperium_logo.png');
 -- Insert sample user data with hashed passwords (in a real application, you would hash passwords properly)
 INSERT INTO users (username, email, password_hash, first_name, last_name) VALUES
 ('jsmith', 'john.smith@email.com', 'hashed_password_placeholder', 'John', 'Smith'),

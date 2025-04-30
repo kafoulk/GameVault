@@ -54,8 +54,8 @@ include '../../includes/header.php';
                                 <?php
                                 $image_filename = $product['image_url'] ?? '';
                                 $image_path = !empty($image_filename)
-                                    ? '/public/assets/images/products/' . $image_filename
-                                    : '/public/assets/images/products/catan_logo.png';
+                                    ? '../assets/images/products/' . $image_filename
+                                    : '../assets/images/products/catan_logo.png';
                                 ?>
                                 <img src="<?= htmlspecialchars($image_path) ?>" alt="<?= htmlspecialchars($product['product_name']) ?>">
                             </div>
@@ -82,7 +82,7 @@ include '../../includes/header.php';
             <div class="promo-content">
                 <h2>New Arrivals Every Week!</h2>
                 <p>Sign up for our newsletter to get updates on the latest games and exclusive offers.</p>
-                <form class="newsletter-form" action="subscribe.php" method="post">
+                <form class="newsletter-form" action="404.php" method="post">
                     <input type="email" name="email" placeholder="Your email address" required>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>

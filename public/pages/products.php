@@ -36,7 +36,7 @@ try {
                         <div class="card h-100">
                             <!-- Image and Name handling, linking to product details page -->
                             <a href="product_details.php?id=<?= $product['product_id'] ?>">
-                                <img src="/public/assets/images/products/<?= htmlspecialchars($product['image_url']) ?>"
+                                <img src="../assets/images/products/<?= htmlspecialchars($product['image_url']) ?>"
                                      class="img-fluid"
                                      alt="<?= htmlspecialchars($product['product_name']) ?>">
                             </a>
