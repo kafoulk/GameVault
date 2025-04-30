@@ -43,7 +43,8 @@ try {
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><?= htmlspecialchars($product['product_name']) ?></h5>
                                 <p class="card-text">$<?= number_format($product['price'], 2) ?></p>
-                                <form method="post" action="shoppingCart.php?action=add&id=<?= $product['product_id'] ?>" class="mt-auto">
+                                <form method="post" action="shoppingCart.php">
+                                    <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
                                     <input type="hidden" name="quantity" value="1">
                                     <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
                                 </form>
