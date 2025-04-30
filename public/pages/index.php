@@ -51,15 +51,13 @@ include '../../includes/header.php';
                         ?>
                         <div class="product-card">
                             <div class="product-image">
-                                <?php if (!empty($product['image_url'])): ?>
-                                    <?php
-                                    // Fix for incorrect image paths
-                                    $image_path = str_replace('../public/assets/images/products/', '../assets/images/products/', $product['image_url']);
-                                    ?>
-                                    <img src="<?php echo htmlspecialchars($image_path); ?>" alt="<?php echo htmlspecialchars($product['product_name']); ?>">
-                                <?php else: ?>
-                                    <img src="../assets/images/products/catan_logo.png" alt="Product image placeholder">
-                                <?php endif; ?>
+                                <?php
+                                $image_filename = $product['image_url'] ?? '';
+                                $image_path = !empty($image_filename)
+                                    ? '../assets/images/products/' . $image_filename
+                                    : '../assets/images/products/catan_logo.png';
+                                ?>
+                                <img src="<?= htmlspecialchars($image_path) ?>" alt="<?= htmlspecialchars($product['product_name']) ?>">
                             </div>
                             <div class="product-info">
                                 <h3><?php echo htmlspecialchars($product['product_name']); ?></h3>
@@ -84,7 +82,7 @@ include '../../includes/header.php';
             <div class="promo-content">
                 <h2>New Arrivals Every Week!</h2>
                 <p>Sign up for our newsletter to get updates on the latest games and exclusive offers.</p>
-                <form class="newsletter-form" action="subscribe.php" method="post">
+                <form class="newsletter-form" action="404.php" method="post">
                     <input type="email" name="email" placeholder="Your email address" required>
                     <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>

@@ -1,6 +1,4 @@
-<?php include '../../includes/header.php'; ?>
-<?php
-http_response_code(404);
+<?php include '../../includes/header.php';
 ?>
 <main>
     <div class="text-center">

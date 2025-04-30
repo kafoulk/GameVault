@@ -1,5 +1,7 @@
 <?php
-$page = isset($_GET['page']) ? $_GET['page'] : 'index';
+require_once __DIR__ . '/dbh.inc.php';
+
+$page = $_GET['page'] ?? 'index';
 
 // List of valid pages
 $valid_pages = ['index', 'about', 'products', 'contact'];
@@ -56,8 +58,8 @@ if (!in_array($page, $valid_pages)) {
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-12">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <form class="d-flex" id="search">
+                            <input id="search_input" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
                             <button class="btn btn-outline-secondary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>
@@ -81,6 +83,9 @@ if (!in_array($page, $valid_pages)) {
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="btn btn-primary ms-3" href="../../public/pages/login.php"><i class="bi bi-person fs-4"></i></a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="btn btn-primary ms-3" href="../../public/pages/shoppingCart.php"><i class="bi bi-cart3 fs-4"></i></a>
