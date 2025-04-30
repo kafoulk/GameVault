@@ -36,12 +36,14 @@ try {
                         <div class="card h-100">
                             <!-- Image and Name handling, linking to product details page -->
                             <a href="product_details.php?id=<?= $product['product_id'] ?>">
-                                <img src="<?= htmlspecialchars($product['image_url'] ?? 'default.jpg') ?>" class="card-img-top" alt="<?= htmlspecialchars($product['product_name'] ?? 'No Name') ?>">
+                                <img src="/public/assets/images/products/<?= htmlspecialchars($product['image_url']) ?>"
+                                     class="img-fluid"
+                                     alt="<?= htmlspecialchars($product['product_name']) ?>">
                             </a>
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><?= htmlspecialchars($product['product_name']) ?></h5>
                                 <p class="card-text">$<?= number_format($product['price'], 2) ?></p>
-                                <form method="post" action="cart.php?action=add&id=<?= $product['product_id'] ?>" class="mt-auto">
+                                <form method="post" action="shoppingCart.php?action=add&id=<?= $product['product_id'] ?>" class="mt-auto">
                                     <input type="hidden" name="quantity" value="1">
                                     <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
                                 </form>

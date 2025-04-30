@@ -1,8 +1,8 @@
 <?php
-// Dynamically load header
+session_start();
 include "../../includes/header.php";
-// Import backend logic for cart
 require_once '../src/php/cart.php';
+require_once '../../includes/dbh.inc.php';
 $total = calculate_cart_total();
 ?>
 <body>
@@ -29,11 +29,17 @@ $total = calculate_cart_total();
                     ?>
                     <tr>
                         <td><?= htmlspecialchars($item['name']) ?></td>
-                        <td>$<?= number_format($item['price'], 2) ?></td>
-                        <td><?= $item['quantity'] ?></td>
-                        <td>$<?= number_format($item_total, 2) ?></td>
+                        <td><?= number_format($item['price'], 2) ?></td>
                         <td>
-                            <a href="cart.php?action=remove&id=<?= $item['id'] ?>" class="btn btn-sm btn-danger">Remove</a>
+                            <div class="d-flex align-items-center">
+                                <a href="../src/php/cart.php?action=decrease&id=<?= $item['id'] ?>" class="btn btn-sm btn-outline-secondary me-1">−</a>
+                                <span><?= $item['quantity'] ?></span>
+                                <a href="../src/php/cart.php?action=increase&id=<?= $item['id'] ?>" class="btn btn-sm btn-outline-secondary ms-1">+</a>
+                            </div>
+                        </td>
+                        <td><?= number_format($item_total, 2) ?></td>
+                        <td>
+                            <a href="../src/php/cart.php?action=remove&id=<?= $item['id'] ?>" class="btn btn-sm btn-danger">Remove</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -56,5 +62,4 @@ $total = calculate_cart_total();
 <?php include "../../includes/footer.php"; ?>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

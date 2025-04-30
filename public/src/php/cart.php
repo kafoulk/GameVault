@@ -1,56 +1,85 @@
 <?php
-// Initialize the cart if it doesn't exist
+require_once __DIR__ . '/../../../includes/dbh.inc.php';
+
+// create cart if it doesn't exist
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Handle add to cart action
+// add to cart action
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['product_id'], $_POST['quantity'])) {
-    $product_id = $_POST['product_id'];
+    // Sanitize inputs
+    $product_id = (int)$_POST['product_id'];
     $quantity = (int)$_POST['quantity'];
 
-    // Fetch product details from the database
+    // fetch product details from the db
     $product = getProductById($product_id);
 
     if ($product) {
-        // Check if the product is already in the cart
+        // check if the product is already in the cart
         if (isset($_SESSION['cart'][$product_id])) {
-            // Update the quantity
+            // update the quantity
             $_SESSION['cart'][$product_id]['quantity'] += $quantity;
         } else {
-            // Add new product to the cart
+            // add new product to the cart
             $_SESSION['cart'][$product_id] = [
-                'id' => $product['id'],
-                'name' => $product['name'],
+                'id' => $product['product_id'],
+                'description' => $product['description'],
+                'name' => $product['product_name'],
                 'price' => $product['price'],
                 'quantity' => $quantity
             ];
         }
     }
-
-    // Redirect to the cart page
-    header('Location: cart.php');
-    exit;
 }
 
-// Handle remove from cart action
-if (isset($_GET['action']) && $_GET['action'] === 'remove' && isset($_GET['id'])) {
+// remove from cart action
+if (isset($_GET['action'], $_GET['id']) && $_GET['action'] === 'remove') {
     $product_id = $_GET['id'];
-    unset($_SESSION['cart'][$product_id]);
-    header('Location: cart.php');
+    if (isset($_SESSION['cart'][$product_id])) {
+        unset($_SESSION['cart'][$product_id]);
+    }
+    header('Location: ../../pages/shoppingCart.php');
     exit;
 }
 
-// Function to fetch product details from the database
+// Increase quantity
+if (isset($_GET['action']) && $_GET['action'] === 'increase' && isset($_GET['id'])) {
+    $product_id = (int)$_GET['id'];
+    if (isset($_SESSION['cart'][$product_id])) {
+        $_SESSION['cart'][$product_id]['quantity'] += 1;
+    }
+    header('Location: ../../pages/shoppingCart.php');
+    exit;
+}
+
+// Decrease quantity
+if (isset($_GET['action']) && $_GET['action'] === 'decrease' && isset($_GET['id'])) {
+    $product_id = (int)$_GET['id'];
+    if (isset($_SESSION['cart'][$product_id])) {
+        $_SESSION['cart'][$product_id]['quantity'] -= 1;
+
+        // Remove item if quantity goes below 1
+        if ($_SESSION['cart'][$product_id]['quantity'] < 1) {
+            unset($_SESSION['cart'][$product_id]);
+        }
+    }
+    header('Location: ../../pages/shoppingCart.php');
+    exit;
+}
+
+// fetch product details from db
 function getProductById($id)
 {
-    // Replace with your actual database connection and query
-    // Example using PDO:
-    $pdo = new PDO('mysql:host=localhost;dbname=gamevault', 'root', '');
-    $stmt = $pdo->prepare('SELECT id, name, price FROM products WHERE id = ?');
-    $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    global $conn;
+    $stmt = $conn->prepare('SELECT product_id, product_name, price, description FROM products WHERE product_id = ?');
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
 }
+
+// Calculate cart total
 function calculate_cart_total()
 {
     $total = 0;

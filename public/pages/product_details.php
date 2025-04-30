@@ -51,7 +51,9 @@ $max_delivery_date = date('l, F j, Y', strtotime('+7 days'));
         <div class="row">
             <div class="col-md-6 mb-4">
                 <!-- Product Image -->
-                <img src="<?= htmlspecialchars($product['image_url'] ?? 'default.jpg') ?>" class="img-fluid" alt="<?= htmlspecialchars($product['product_name'] ?? 'No Name') ?>">
+                <img src="/public/assets/images/products/<?= htmlspecialchars($product['image_url']) ?>"
+                     class="img-fluid"
+                     alt="<?= htmlspecialchars($product['product_name']) ?>">
             </div>
             <div class="col-md-6 mb-4">
                 <h3 class="card-title"><?= htmlspecialchars($product['product_name']) ?></h3>
@@ -59,7 +61,8 @@ $max_delivery_date = date('l, F j, Y', strtotime('+7 days'));
                 <p><strong>Category:</strong> <?= htmlspecialchars($product['category_name'] ?? 'Uncategorized') ?></p>
                 <p><strong>Price:</strong> $<?= number_format($product['price'] ?? 0, 2) ?></p>
                 <p><strong>Delivery Date:</strong> <?= $delivery_date ?> to <?= $max_delivery_date ?></p>
-                <form method="post" action="cart.php?action=add&id=<?= $product['product_id'] ?? 0 ?>" class="mt-3">
+                <form method="post" action="/public/pages/shoppingCart.php" class="mt-3">
+                    <input type="hidden" name="product_id" value="<?= htmlspecialchars($product['product_id']) ?>">
                     <input type="hidden" name="quantity" value="1">
                     <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
                 </form>
