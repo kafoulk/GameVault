@@ -58,8 +58,8 @@ if (!in_array($page, $valid_pages)) {
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-3 col-md-4 col-12">
-                        <form class="d-flex" id="search">
-                            <input id="search_input" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+                        <form class="d-flex" id="search" method="GET" action="/../../GameVault/public/pages/searchResults.php">
+                            <input id="search_input" name="q" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
                             <button class="btn btn-outline-secondary" type="submit">
                                 <i class="bi bi-search"></i>
                             </button>

@@ -9,8 +9,6 @@ require_once '../../includes/dbh.inc.php';
 if (!isset($conn) || $conn->connect_error) {
     die("Connection failed: " . (isset($conn) ? $conn->connect_error : "Connection variable not set"));
 }
-
-// Fetch products from the database, joining categories to get category name
 try {
     $stmt = $conn->prepare("SELECT p.product_id, p.product_name, p.price, p.image_url, c.category_name 
                             FROM products p
@@ -33,17 +31,18 @@ try {
             <?php if (!empty($products)): ?>
                 <?php foreach ($products as $product): ?>
                     <div class="col-md-4 mb-4">
-                        <div class="card h-100">
-                            <!-- Image and Name handling, linking to product details page -->
+                        <div class="product-card h-100 text-center p-3 border rounded shadow-sm">
+                            <!-- Image and Name linking to product details page -->
                             <a href="product_details.php?id=<?= $product['product_id'] ?>">
                                 <img src="../assets/images/products/<?= htmlspecialchars($product['image_url']) ?>"
-                                     class="img-fluid"
-                                     alt="<?= htmlspecialchars($product['product_name']) ?>">
+                                     class="img-fluid mb-3"
+                                     alt="<?= htmlspecialchars($product['product_name']) ?>"
+                                     style="max-height: 200px; object-fit: contain;">
                             </a>
-                            <div class="card-body d-flex flex-column">
+                            <div class="card-body d-flex flex-column align-items-center">
                                 <h5 class="card-title"><?= htmlspecialchars($product['product_name']) ?></h5>
                                 <p class="card-text">$<?= number_format($product['price'], 2) ?></p>
-                                <form method="post" action="shoppingCart.php">
+                                <form method="post" action="shoppingCart.php" class="w-100">
                                     <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
                                     <input type="hidden" name="quantity" value="1">
                                     <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
@@ -51,6 +50,7 @@ try {
                             </div>
                         </div>
                     </div>
+
                 <?php endforeach; ?>
             <?php else: ?>
                 <p>No products available at the moment.</p>

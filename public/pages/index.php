@@ -20,6 +20,33 @@ $featured_query = "SELECT p.*, c.category_name
 $featured_result = $conn->query($featured_query);
 
 
+if (isset($_POST['subscribe'])) {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+
+    // Check if email already exists
+    $check = $conn->prepare("SELECT user_id FROM subscribers WHERE email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $check->store_result();
+
+    if ($check->num_rows > 0) {
+        $subscribeMessage = "You're already subscribed.";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO subscribers (email) VALUES (?)");
+        $stmt->bind_param("s", $email);
+
+        if ($stmt->execute()) {
+            $subscribeMessage = "Thank you for subscribing!";
+        } else {
+            $subscribeMessage = "Error: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+
+    $check->close();
+}
+
 // Include header
 include '../../includes/header.php';
 ?>
@@ -82,10 +109,14 @@ include '../../includes/header.php';
             <div class="promo-content">
                 <h2>New Arrivals Every Week!</h2>
                 <p>Sign up for our newsletter to get updates on the latest games and exclusive offers.</p>
-                <form class="newsletter-form" action="404.php" method="post">
-                    <input type="email" name="email" placeholder="Your email address" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                <form class="newsletter-form" action="" method="POST">
+                    <label for="email">Subscribe to our newsletter:</label><br>
+                    <input type="email" id="email_input" name="email" placeholder="Your email here..." required>
+                    <button type="submit" class="btn btn-primary" name="subscribe">Subscribe</button>
                 </form>
+                <?php if (!empty($subscribeMessage)) : ?>
+                    <p class="subscribe-message"><?= htmlspecialchars($subscribeMessage) ?></p>
+                <?php endif; ?>
             </div>
         </section>
     </main>
