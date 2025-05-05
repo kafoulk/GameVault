@@ -30,15 +30,15 @@ if (isset($_POST['subscribe'])) {
     $check->store_result();
 
     if ($check->num_rows > 0) {
-        echo "You're already subscribed.";
+        $subscribeMessage = "You're already subscribed.";
     } else {
         $stmt = $conn->prepare("INSERT INTO subscribers (email) VALUES (?)");
         $stmt->bind_param("s", $email);
 
         if ($stmt->execute()) {
-            echo "Thank you for subscribing!";
+            $subscribeMessage = "Thank you for subscribing!";
         } else {
-            echo "Error: " . $stmt->error;
+            $subscribeMessage = "Error: " . $stmt->error;
         }
 
         $stmt->close();
@@ -114,6 +114,9 @@ include '../../includes/header.php';
                     <input type="email" id="email_input" name="email" placeholder="Your email here..." required>
                     <button type="submit" class="btn btn-primary" name="subscribe">Subscribe</button>
                 </form>
+                <?php if (!empty($subscribeMessage)) : ?>
+                    <p class="subscribe-message"><?= htmlspecialchars($subscribeMessage) ?></p>
+                <?php endif; ?>
             </div>
         </section>
     </main>
