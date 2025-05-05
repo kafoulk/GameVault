@@ -85,6 +85,9 @@ if (!in_array($page, $valid_pages)) {
                                         <a class="nav-link" href="../../public/pages/contact.php">Contact</a>
                                     </li>
                                     <li class="nav-item">
+                                        <a class="btn btn-primary ms-3" href="../../public/pages/login.php"><i class="bi bi-person fs-4"></i></a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="btn btn-primary ms-3" href="../../public/pages/shoppingCart.php"><i class="bi bi-cart3 fs-4"></i></a>
                                     </li>
                                 </ul>
