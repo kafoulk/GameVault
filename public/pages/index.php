@@ -1,6 +1,6 @@
 <?php
 // Include database connection
-require_once '../../includes/dbh.inc1.php';
+require_once '../../includes/dbh.inc.php';
 
 
 
