@@ -20,7 +20,7 @@ if ($conn->connect_error) {
     exit();
 }
 
-define('product_img', 'public/assets/images/products')
+
 
 
 ?>
