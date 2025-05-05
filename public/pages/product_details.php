@@ -1,8 +1,5 @@
 <?php
-// Dynamically load header
 include "../../includes/header.php";
-
-// Connect to database
 require_once '../../includes/dbh.inc.php';
 
 // Check database connection

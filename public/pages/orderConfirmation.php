@@ -1,7 +1,8 @@
 <?php
 require_once '../../includes/header.php';
+require_once __DIR__ . '/../../includes/dbh.inc.php';
 
-$transaction_ref = htmlspecialchars($_GET['ref'] ?? 'UNKNOWN');
+$transaction_ref = htmlspecialchars($_GET['TXN'] ?? 'UNKNOWN');
 ?>
 
 <main class="container my-5 text-center">

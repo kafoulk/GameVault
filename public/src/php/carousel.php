@@ -12,7 +12,7 @@ $result = $conn->query($sql);
 <div class="carousel-wrapper">
     <div class="carousel" id="carousel">
         <?php while ($row = $result->fetch_assoc()): ?>
-            <div class="products">
+            <div class="featured-products">
                 <img
                         src="<?php echo $basePath . htmlspecialchars($row['image_url']); ?>"
                         alt="<?php echo htmlspecialchars($row['product_name']); ?>"
