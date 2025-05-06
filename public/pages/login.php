@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
         $login_error = "Please fill in all fields";
     } else {
         // Query to find user with the provided email
-        $stmt = $conn->prepare("SELECT user_id, username, email, password_hash, first_name, last_name FROM users WHERE email = ?");
+        $stmt = $conn->prepare("SELECT user_id, username, email, password_hash, first_name, last_name, is_admin FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -46,8 +46,8 @@ if (isset($_POST['login'])) {
                 $_SESSION['last_name'] = $user['last_name'];
                 $_SESSION['email'] = $user['email'];
 
-                // Check if user is admin (for demonstration, we're using user_id 1 as admin)
-                $_SESSION['is_admin'] = ($user['user_id'] == 1);
+                // Set admin status based on is_admin field
+                $_SESSION['is_admin'] = $user['is_admin'] ? true : false;
 
                 // Redirect to the login page to show the welcome message
                 header("Location: login.php");
@@ -87,10 +87,11 @@ if (isset($_POST['register'])) {
         } else {
             // Hash the password (in a real app, use password_hash())
             $password_hash = $password; // For demonstration purposes only
+            $is_admin = false; // Default value for new users
 
             // Insert new user into database
-            $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash, first_name, last_name) VALUES (?, ?, ?, ?, ?)");
-            $stmt->bind_param("sssss", $username, $email, $password_hash, $first_name, $last_name);
+            $stmt = $conn->prepare("INSERT INTO users (username, email, password_hash, first_name, last_name, is_admin) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssssi", $username, $email, $password_hash, $first_name, $last_name, $is_admin);
 
             if ($stmt->execute()) {
                 $register_success = "Registration successful! You can now log in.";
@@ -210,8 +211,8 @@ include "../../includes/header.php";
 
                                 <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
                                     <div class="mt-4 text-center">
-                                        <a href="#" class="btn btn-primary m-2">Manage Products</a>
-                                        <a href="#" class="btn btn-primary m-2">Generate Reports</a>
+                                        <a href="manage_products.php" class="btn btn-primary m-2">Manage Products</a>
+                                        <a href="generate_reports.php" class="btn btn-primary m-2">Generate Reports</a>
                                     </div>
                                 <?php endif; ?>
 

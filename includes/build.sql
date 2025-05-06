@@ -10,6 +10,7 @@ email VARCHAR(100) NOT NULL UNIQUE,
 password_hash VARCHAR(255) NOT NULL, -- Store hashed passwords, never plaintext
 first_name VARCHAR(50),
 last_name VARCHAR(50),
+is_admin BOOLEAN DEFAULT FALSE, -- Added column for admin privileges
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 last_login TIMESTAMP NULL
 );
@@ -96,12 +97,17 @@ INSERT INTO products (category_id, product_name, description, price, stock_quant
 (1, 'Ticket to Ride', 'Cross-country train adventure board game', 44.99, 18, '../public/assets/images/products/ticket_to_ride_logo.png'),
 (5, 'Twilight Imperium', 'Epic space opera strategy game', 149.99, 8, '../public/assets/images/products/twilight_imperium_logo.png');
 -- Insert sample user data with hashed passwords (in a real application, you would hash passwords properly)
-INSERT INTO users (username, email, password_hash, first_name, last_name) VALUES
-('jsmith', 'john.smith@email.com', 'hashed_password_placeholder', 'John', 'Smith'),
-('sjohnson', 'sarah.j@email.com', 'hashed_password_placeholder', 'Sarah', 'Johnson'),
-('mbrown', 'mbrown@email.com', 'hashed_password_placeholder', 'Michael', 'Brown'),
-('edavis', 'emily.davis@email.com', 'hashed_password_placeholder', 'Emily', 'Davis'),
-('dwilson', 'dwilson@email.com', 'hashed_password_placeholder', 'David', 'Wilson');
+-- Insert regular users
+INSERT INTO users (username, email, password_hash, first_name, last_name, is_admin) VALUES
+('jsmith', 'john.smith@email.com', 'hashed_password_placeholder', 'John', 'Smith', FALSE),
+('sjohnson', 'sarah.j@email.com', 'hashed_password_placeholder', 'Sarah', 'Johnson', FALSE),
+('mbrown', 'mbrown@email.com', 'hashed_password_placeholder', 'Michael', 'Brown', FALSE),
+('edavis', 'emily.davis@email.com', 'hashed_password_placeholder', 'Emily', 'Davis', FALSE),
+('dwilson', 'dwilson@email.com', 'hashed_password_placeholder', 'David', 'Wilson', FALSE);
+
+-- Insert admin user
+INSERT INTO users (username, email, password_hash, first_name, last_name, is_admin) VALUES
+('admin', 'admin@gamevault.com', 'admin123', 'Admin', 'User', TRUE);
 
 -- Insert sample orders data
 INSERT INTO orders (user_id, customer_name, customer_email, customer_address, total_amount, order_status, tracking_number) VALUES
