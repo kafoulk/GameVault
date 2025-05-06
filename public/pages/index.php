@@ -119,6 +119,7 @@ include '../../includes/header.php';
                 <?php endif; ?>
             </div>
         </section>
+
     </main>
 
 <?php

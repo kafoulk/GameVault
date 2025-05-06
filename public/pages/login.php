@@ -139,7 +139,7 @@ include "../../includes/header.php";
     <main>
         <?php if (isset($_SESSION['user_id'])): ?>
             <!-- User is logged in - show welcome message and orders -->
-            <div class="d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+            <div class="d-flex align-items-center justify-content-center" style="min-height: 70vh; margin-bottom: 100px;">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-md-6">
@@ -195,7 +195,6 @@ include "../../includes/header.php";
                                                         </td>
                                                         <td><?php echo $order['tracking_number'] ? $order['tracking_number'] : 'N/A'; ?></td>
                                                         <td>
-                                                            <a href="order_details.php?id=<?php echo $order['order_id']; ?>" class="btn btn-sm btn-primary">View</a>
 
                                                             <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
                                                                 <a href="update_order.php?id=<?php echo $order['order_id']; ?>" class="btn btn-sm btn-warning">Update</a>
@@ -209,10 +208,10 @@ include "../../includes/header.php";
                                     <?php endif; ?>
                                 </div>
 
+                                <!-- Admin Buttons Section with improved spacing -->
                                 <?php if (isset($_SESSION['is_admin']) && $_SESSION['is_admin']): ?>
-                                    <div class="mt-4 text-center">
-                                        <a href="manage_products.php" class="btn btn-primary m-2">Manage Products</a>
-                                        <a href="generate_reports.php" class="btn btn-primary m-2">Generate Reports</a>
+                                    <div class="mt-5 mb-5 text-center">
+                                        <a href="update_product.php" class="btn btn-success px-4 py-2">Update Products</a>
                                     </div>
                                 <?php endif; ?>
 
@@ -316,6 +315,7 @@ include "../../includes/header.php";
                 </div>
             </div>
         <?php endif; ?>
+
+        <?php include "../../includes/footer.php"; ?>
     </main>
 
-<?php include "../../includes/footer.php"; ?>
