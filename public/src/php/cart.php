@@ -1,6 +1,9 @@
 <?php
 ob_start();
-SESSION_START();
+// Check if a session is already active before starting one
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 require_once __DIR__ . '/../../../includes/dbh.inc.php';
 
 // Ensure cart is initialized
